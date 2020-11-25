@@ -67,7 +67,7 @@ server.authentication = config.token || null
 global.endpoint = config.endpoint
 
 hosts['music.httpdns.c.163.com'] = random(['59.111.181.35', '59.111.181.38'])
-hosts['httpdns.n.netease.com'] = random(['59.111.179.213', '59.111.179.214'])
+hosts['httpdns.n.netease.com'] = random(['59.111.179.213', '59.111.179.214','59.111.239.61','59.111.239.62'])
 
 const dns = host => new Promise((resolve, reject) => require('dns').lookup(host, {all: true}, (error, records) => error ? reject(error) : resolve(records.map(record => record.address))))
 const httpdns = host => require('./request')('POST', 'https://music.httpdns.c.163.com/d', {}, host).then(response => response.json()).then(jsonBody => jsonBody.dns.reduce((result, domain) => result.concat(domain.ips), []))
